@@ -15,14 +15,17 @@ $(EXECUTABLE): $(OBJECTS)
 
 install: binary man
 
+remove: rm_man
+	rm /usr/bin/$(EXECUTABLE)
+
 binary:
-	cp esocks /usr/bin
+	cp $(EXECUTABLE) /usr/bin
 
 man: man_move
 	bzip2 /usr/share/man/man8/esocks.8
 
 man_move:
-	mv man/esocks.8 /usr/share/man/man8/
+	mv man/esocks.8 /usr/share/man/man8/$(EXECUTABLE).8
 
 clean:
-	rm -rf esocks src/*.o
+	rm -rf $(EXECUTABLE) src/*.o

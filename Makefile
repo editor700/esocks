@@ -13,7 +13,7 @@ $(EXECUTABLE): $(OBJECTS)
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
 
-install: binary rm_man man
+install: binary man
 
 remove: rm_man
 	rm /usr/bin/$(EXECUTABLE)
@@ -25,7 +25,7 @@ binary:
 	cp $(EXECUTABLE) /usr/bin
 
 man: man_move
-	bzip2 /usr/share/man/man8/$(EXECUTABLE).8
+	bzip2 -f /usr/share/man/man8/$(EXECUTABLE).8
 
 man_copy:
 	cp man/esocks.8 /usr/share/man/man8/$(EXECUTABLE).8

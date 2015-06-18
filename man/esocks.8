@@ -1,0 +1,61 @@
+.TH esocks 8 "10 June 2015" "0.1" "esocks man page"
+.SH NAME
+.B esocks
+\- tiny socks proxy server
+.SH SYNOPSIS
+.B esocks
+[\fB\-?hvHpalod\fR] [\fB\-\-help\fR] [\fB\-\-version\fR] [\fB\-\-output\fR] [\fB\-\-daemon\fR] [\fB\-\-log\fR \fIfilename\fR] [\fB\-\-host\fR \fIhost_address\fR] [\fB\-\-address\fR \fIhost_address:port\fR] [\fB\-\-port\fR \fIport_num\fR] [\fB--type\fR \fIsocks_type\fR]
+[\fB--password\fR \fIpassword\fR] [\fB--login\fR \fIlogin\fR] [\fB--max\fR \fImax_conns\fR]
+.SH DESCRIPTION
+.B esocks
+(editor700 socks) - simpliest tiny socks 4/4a/5 proxy server, written on C. Required too few resources and perfectly suitable for thin machines.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-? ", " \-\-help
+Print help.
+.TP
+.BR \-v ", " \-\-version
+Print version.
+.TP
+.BR \-o ", " \-\-output
+Print logging output in stdout.
+.TP
+.BR \-d ", " \-\-daemon
+Run server as daemon. (superuser access required)
+.TP
+.BR \-l ", " \-\-log " " \fIlogfile\fR
+Logging into \fIlogfile\fR.
+.TP
+.BR \-H ", " \-a ", " \-\-host ", " \-\-address " " \fIhost_address:port\fR
+Set server listen on \fIhost_address:port\fR. If port omitted, server will listen \fI1080\fR.
+.TP
+.BR \-p ", " \-\-port " " \fIport_num\fR
+Set server listen \fIport_num\fR port.
+.TP
+.BR \-m ", " \-\-max " " \fImax_conns\fR
+Set maximum connections number ", " 0 = no limit.
+.TP
+.BR \-L ", " \-\-login ", " \-\-username ", " \-\-user " " \fIlogin\fR
+Set username for socks5 connection.
+.TP
+.BR \-P ", " \-\-pass ", " \-\-password " " \fIpassword\fR
+Set password for socks5 connection.
+.TP
+.BR \-t ", " \-\-type " " \fIsocks_type\fR
+Set server use specified socks version (4 \- socks4, 5 \- socks4, all \- socks4 and socks5).
+.SH SIGNALS
+.B esocks
+handle the following signals:
+.TP
+SIGINT, SIGTERM
+Shutdown server.
+.TP
+SIGPIPE
+Ignore broken connections.
+.SH BUGS
+No known bugs.
+.br
+About all found bugs report to
+.B editor700@gmail.com
+.SH AUTHOR
+Michael Kononenko (editor700@gmail.com)

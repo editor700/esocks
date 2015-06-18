@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>esocks man page</title>
+<style type="text/css">
+body
+{
+	font-family: Liberation Sans, Tahoma, Arial, Verdana, "sans-serif";
+	margin: 10px;
+}
+p
+{
+	margin-left: 40px;
+}
+span.code
+{
+	font-family: Liberation Mono, Monospace, Lucida Console;
+	font-size: 90%;
+}
+div.center
+{
+	position: absolute;
+	top: 10px;
+	width: 300px;
+	margin-left: -150px;
+	left: 50%;
+	text-align: center;
+}
+div.right
+{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+</style>
+</head>
+<body>
+esocks(8)<div class="center">esocks man page</div><div class="right">esocks 0.1</div><br><br><br><br><br>
+<b>NAME</b>
+<p><b>esocks</b> - tiny socks proxy server</p>
+<b>SYNOPSIS</b>
+<p><span class="code"><b>esocks</b> [<b>-?hvHpalod</b>] [<b>--help</b>] [<b>--version</b>] [<b>--output</b>] [<b>--daemon</b>] [<b>--log</b>  <u>filename</u>] [<b>--host</b>
+<u>host_address</u>] [<b>--address</b> <u>host_address:port</u>] [<b>--port</b> <u>port_num</u>] [<b>--type</b> <u>socks_type</u>] [<b>--password</b> <u>password</u>] [<b>--login</b> <u>login</u>] [<b>--max</b> <u>max_conns</u>]</span></p>
+<b>DESCRIPTION</b>
+<p><b>esocks</b> (editor700 socks) - simpliest tiny socks 4/4a/5 proxy server, written on C. Required too few resources and perfectly suitable for thin machines.</p>
+<b>OPTIONS</b>
+<p>
+<span class="code"><b>-h</b>, <b>-?</b>, <b>--help</b><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print help.<br>
+<br>
+<span class="code"><b>-v</b>, <b>--version</b><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print version.<br>
+<br>
+<span class="code"><b>-o</b>, <b>--output</b><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Print logging output in stdout.<br>
+<br>
+<span class="code"><b>-d</b>, <b>--daemon</b><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Run server as daemon. (superuser access required)<br>
+<br>
+<span class="code"><b>-l</b>, <b>--log</b> <u>logfile</u><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Logging into logfile.<br>
+<br>
+<span class="code"><b>-H</b>, <b>-a</b>, <b>--host</b>, <b>--address</b> <u>host_address:port</u><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set server listen on <span class="code"><u>host_address:port</u></span>. If port omitted, server will listen 1080.<br>
+<br>
+<span class="code"><b>-p</b>, <b>--port</b> <u>port_num</u><br></span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set server listen <span class="code"><u>port_num</u></span> port.<br>
+<br>
+<span class="code"><b>-m</b>, <b>--max</b> <u>max_conns</u></span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set maximum connections number ", " 0 = no limit.<br>
+<br>
+<span class="code"><b>-L</b>, <b>--login</b>, <b>--username</b>, <b>--user</b> <u>login</u></span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set username for socks5 connection.<br>
+<br>
+<span class="code"><b>-P</b>, <b>--pass</b>, <b>--password</b> <u>password</u></span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set password for socks5 connection.<br>
+<br>
+<span class="code"><b>-t</b>, <b>--type</b> <u>socks_type</u></span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set server use specified socks version (4 - socks4, 5 - socks4, all - socks4 and socks5).<br><br>
+</p>
+<b>SIGNALS</b>
+<p>esocks handle the following signals:<br><br>
+<b>SIGINT, SIGTERM</b><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Shutdown server.<br><br>
+<b>SIGPIPE</b><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ignore broken connections.</p>
+<b>BUGS</b>
+<p>No known bugs.<br>
+About all found bugs report to editor700@gmail.com</p>
+<b>AUTHOR</b>
+<p>Michael Kononenko (<a href="mailto:editor700@gmail.com">editor700@gmail.com</a>)</p>
+<br>
+<center>10 June 2015</center>
+<br>
+<center>Copyright &copy; 2015 Michael Kononenko</center>
+</body>
+</html>

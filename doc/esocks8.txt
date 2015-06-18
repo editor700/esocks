@@ -1,0 +1,73 @@
+esocks(8)
+
+
+
+NAME
+       esocks - tiny socks proxy server
+
+SYNOPSIS
+       esocks [-?hvHpalod] [--help] [--version] [--output] [--daemon]
+              [--log filename] [--host host_address]
+              [--address host_address:port] [--port port_num]
+              [--type socks_type] [--password password]
+              [--login login] [--max max_conns]
+
+DESCRIPTION
+       esocks (editor700 socks) - simpliest tiny socks 4/4a/5 proxy server,
+       written on C. Required too few resources and perfectly suitable for thin
+       machines.
+
+OPTIONS
+       -h, -?, --help
+              Print help.
+
+       -v, --version
+              Print version.
+
+       -o, --output
+              Print logging output in stdout.
+
+       -d, --daemon
+              Run server as daemon. (superuser access required)
+
+       -l, --log logfile
+              Logging into logfile.
+
+       -H, -a, --host, --address host_address:port
+              Set server listen on host_address:port. If port omitted, server
+              will listen 1080.
+
+       -p, --port port_num
+              Set server listen port_num port.
+
+       -m, --max max_conns
+              Set maximum connections number ", " 0 = no limit.
+
+       -L, --login, --username, --user login
+              Set username for socks5 connection.
+
+       -P, --pass, --password password
+              Set password for socks5 connection.
+
+       -t, --type socks_type
+              Set server use specified socks version (4 - socks4, 5 - socks4,
+              all - socks4 and socks5).
+
+SIGNALS
+       esocks handle the following signals:
+
+       SIGINT, SIGTERM
+              Shutdown server.
+
+       SIGPIPE
+              Ignore broken connections.
+
+BUGS
+       No known bugs.
+       About all found bugs report to editor700@gmail.com
+
+AUTHOR
+       Michael Kononenko (editor700@gmail.com)
+
+
+0.1, 10 June 2015

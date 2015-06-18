@@ -18,11 +18,14 @@ install: binary man
 remove: rm_man
 	rm /usr/bin/$(EXECUTABLE)
 
+rm_man:
+	rm /usr/share/man/man8/$(EXECUTABLE).8
+
 binary:
 	cp $(EXECUTABLE) /usr/bin
 
 man: man_move
-	bzip2 /usr/share/man/man8/esocks.8
+	bzip2 /usr/share/man/man8/$(EXECUTABLE).8
 
 man_move:
 	mv man/esocks.8 /usr/share/man/man8/$(EXECUTABLE).8

@@ -24,7 +24,7 @@ rm_man:
 binary:
 	cp $(EXECUTABLE) /usr/bin
 
-man: man_move
+man: man_copy
 	bzip2 -f /usr/share/man/man8/$(EXECUTABLE).8
 
 man_copy:

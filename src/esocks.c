@@ -16,13 +16,22 @@ void parse_args(int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 	{
 		char *arg = argv[i];
+		bool type = FALSE;
 		if (*arg!='-')
 		{
 			perr("wrong option '%s'", arg);
 			continue;
 		}
-		else *arg++;
-		if (strcmp(arg, "help")==0 || in_str(arg, 'h', 1) || in_str(arg, '?', 1))
+		else
+		{
+			*arg++;
+			if (*arg=='-')
+			{
+				*arg++;
+				type = TRUE;
+			}
+		}
+		if (type?strcmp(arg, "help")==0:(in_str(arg, 'h', 1) || in_str(arg, '?', 1)))
 		{
 			print_version();
 			printf("Usage: %s [-?hvHpalodt] [--help] [--version] [--output] [--daemon] [--log filename] [--host host_address] [--address host_address:port] [--port port_num] [--type socks_type] [--password password] [--login login] [--max max_conns]\n\nOptions:\n", pname);
@@ -43,12 +52,12 @@ void parse_args(int argc, char *argv[])
 #endif
 			exit(0);
 		}
-		else if (strcmp(arg, "version")==0 || in_str(arg, 'v', 1))
+		else if (type?strcmp(arg, "version")==0:in_str(arg, 'v', 1))
 		{
 			print_version();
 			exit(0);
 		}
-		else if (strcmp(arg, "host")==0 || in_str(arg, 'H', 1) || strcmp(arg, "address")==0 || in_str(arg, 'a', 1))
+		else if (type?(strcmp(arg, "host")==0 || strcmp(arg, "address")==0):(in_str(arg, 'H', 1) || in_str(arg, 'a', 1)))
 		{
 			if (i+1==argc) perr("no host was found");
 			Address ad = get_host(argv[i+1]);
@@ -60,7 +69,7 @@ void parse_args(int argc, char *argv[])
 			}
 			else perr("wrong host address '%s'", argv[i+1]);
 		}
-		else if (strcmp(arg, "port")==0 || in_str(arg, 'p', 1))
+		else if (type?strcmp(arg, "port")==0:in_str(arg, 'p', 1))
 		{
 			if (i+1==argc) perr("no ports was found");
 			ushort p = atoi(argv[i+1]);
@@ -71,21 +80,21 @@ void parse_args(int argc, char *argv[])
 			}
 			else perr("wrong port number '%s'", argv[i+1]);
 		}
-		else if (strcmp(arg, "log")==0 || in_str(arg, 'l', 1))
+		else if (type?strcmp(arg, "log")==0:in_str(arg, 'l', 1))
 		{
 			if (i+1==argc) perr("no log file");
 			logfile = argv[++i];
 		}
-		else if (strcmp(arg, "output")==0 || in_str(arg, 'o', 1))
+		else if (type?strcmp(arg, "output")==0:in_str(arg, 'o', 1))
 		{
 			output = TRUE;
 		}
-		else if (strcmp(arg, "daemon")==0 || in_str(arg, 'd', 1))
+		else if (type?strcmp(arg, "daemon")==0:in_str(arg, 'd', 1))
 		{
 			output = FALSE;
 			daem = TRUE;
 		}
-		else if (strcmp(arg, "max")==0 || in_str(arg, 'm', 1))
+		else if (type?strcmp(arg, "max")==0:in_str(arg, 'm', 1))
 		{
 			if (i+1==argc) perr("max_conn not specified");
 			uint p = atoi(argv[i+1]);
@@ -97,19 +106,19 @@ void parse_args(int argc, char *argv[])
 			else perr("wrong max_conn number");
 		}
 #ifdef SOCKS5
-		else if (strcmp(arg, "login")==0 || strcmp(arg, "username")==0 || strcmp(arg, "user")==0 || in_str(arg, 'L', 1))
+		else if (type?(strcmp(arg, "login")==0 || strcmp(arg, "username")==0 || strcmp(arg, "user")==0):in_str(arg, 'L', 1))
 		{
 			if (i+1==argc) perr("no username specified");
 			socks5_login = argv[++i];
 		}
-		else if (strcmp(arg, "password")==0 || strcmp(arg, "pass")==0 || in_str(arg, 'P', 1))
+		else if (type?(strcmp(arg, "password")==0 || strcmp(arg, "pass")==0):in_str(arg, 'P', 1))
 		{
 			if (i+1==argc) perr("no password specified");
 			socks5_password = argv[++i];
 		}
 #endif
 #if defined SOCKS4 || defined SOCKS5
-		else if (strcmp(arg, "type")==0 || in_str(arg, 't', 1))
+		else if (type?strcmp(arg, "type")==0:in_str(arg, 't', 1))
 		{
 			if (i+1==argc) perr("socks type not specified");
 			if (strcmp(argv[i+1], "all")==0) i++;
@@ -130,7 +139,7 @@ void parse_args(int argc, char *argv[])
 			else perr("incorrect socks proxy type '%s'", argv[i+1]);
 		}
 #endif
-		else perr("wrong option '%s'", arg);
+		else perr("wrong option '%s'", argv[i]);
 	}
 }
 
